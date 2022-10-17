@@ -78,3 +78,4 @@ Helm install elasticsearch
     helm -n jhipster install filebeat -f value-filebeat.yaml filebeat
 
 Reduce size of elasticsearch : https://staffordwilliams.com/blog/2021/02/01/minimal-elasticsearch-resources-in-kubernetes/
+Singple pod elastic search will need to have https://stackoverflow.com/questions/64533991/k8s-elasticsearch-with-filebeat-is-keeping-not-ready-after-rebooting
