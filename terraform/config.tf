@@ -7,7 +7,7 @@
 # }
 
 variable "region" {
-  default     = "ap-southeast-1"
+  default     = "ap-southeast-2"
   description = "AWS region"
 }
 

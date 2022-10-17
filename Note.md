@@ -34,3 +34,47 @@ Password
 
                                                                       
 
+### Install Nginx Controller
+https://devopscube.com/setup-ingress-kubernetes-nginx-controller/
+https://arnavtripathy98.medium.com/solution-how-to-deploy-argo-cd-dashboard-over-nginx-ingress-controller-926d8a540844
+
+We need to deploy the following objects to have a working Nginx controller.
+
+    ingress-nginx namespace
+    Service account/Roles/ClusterRoles for Nginx admission controller
+    Validating webhook Configuration
+    Jobs to create/update Webhook CA bundles
+    Service account/Roles/ClusterRoles of Nginx controller deployment
+    Nginx controller configmap
+    Services for nginx controller & admission controller
+    Ingress controller deployment
+
+- Cai dat elk,
+https://viblo.asia/p/k8s-phan-13-logging-tren-k8s-su-dung-elk-section2-63vKjgzMZ2R
+
+cai dat zookeeper,kafka
+
+    cd zookeeper-k8s
+    helm -n jhipster install zookeeper -f values.yaml zookeeper
+    kubectl port-forward --namespace jhipster svc/zookeeper 2181:2181 &
+    zkCli.sh 127.0.0.1:218
+
+    cd kafka-k8s
+    helm -n jhipster install kafka -f value-kafka.yaml kafka
+
+Test
+
+    kubectl run kafka-client --restart='Never' --image docker.io/bitnami/kafka:2.8.0-debian-10-r0 --namespace jhipster --command -- sleep infinity    
+    kafka-console-consumer.sh --bootstrap-server kafka.jhipster.svc.cluster.local:9092 --topic test --from-beginning
+
+Helm install elasticsearch
+    cd elk/elastic-elasticsearch
+    helm -n jhipster install elasticsearch -f value-elasticsearch.yaml elasticsearch
+    cd elk/elastic-kibana
+    helm -n jhipster install kibana -f value-kibana.yaml kibana
+    cd elk/elastic-logstash
+    helm -n jhipster install logstash -f value-logstash.yaml logstash
+    cd elk/elastic-filebeat
+    helm -n jhipster install filebeat -f value-filebeat.yaml filebeat
+
+Reduce size of elasticsearch : https://staffordwilliams.com/blog/2021/02/01/minimal-elasticsearch-resources-in-kubernetes/
