@@ -79,3 +79,16 @@ Helm install elasticsearch
 
 Reduce size of elasticsearch : https://staffordwilliams.com/blog/2021/02/01/minimal-elasticsearch-resources-in-kubernetes/
 Singple pod elastic search will need to have https://stackoverflow.com/questions/64533991/k8s-elasticsearch-with-filebeat-is-keeping-not-ready-after-rebooting
+
+Check health:  curl http://localhost:9200/_cluster/health 
+kubectl exec --stdin --tty elasticsearch-master-0 -- /bin/bash
+
+
+
+### TESTING
+
+store: http://store.dev.au.worklifehero.ai
+argo: https://argo-test.dev.au.worklifehero.ai/
+elastic indices: http://elasticsearch.dev.au.worklifehero.ai/_cat/indices
+kibana: http://kibana.dev.au.worklifehero.ai/
+
